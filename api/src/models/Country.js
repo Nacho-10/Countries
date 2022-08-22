@@ -1,9 +1,12 @@
 const { DataTypes } = require('sequelize');
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('postgres:postgres:nacho1234/dbcountries');
+
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
-module.exports = (sequelize) => {
+
   // defino el modelo
-  sequelize.define('country', {
+  const Country = sequelize.define('country', {
     id: {
       type: DataTypes.VARCHAR(3),
       allowNull: false,
@@ -38,4 +41,4 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
   });
-};
+  module.exports = Country;

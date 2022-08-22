@@ -1,7 +1,8 @@
 const { DataTypes } = require('sequilize');
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('postgres:postgres:nacho1234/dbcountries');
 
-module.exports = (sequelize) => {
-    sequelize.define('Activity', {
+    const Activity = sequelize.define('Activity', {
         name: {
             type: DataTypes.STRING,
             allowNull: true,
@@ -15,9 +16,9 @@ module.exports = (sequelize) => {
             allowNull: true,
         },
         temporada: {
-            type: DataTypes.TEXT('Verano','Otoño','Invierno','Primavera'),
+            type: DataTypes.ENUM('Verano','Otoño','Invierno','Primavera'),
             allowNull: true,
         },
-
-    });
-};
+        
+    });  
+    module.exports = Activity; 
